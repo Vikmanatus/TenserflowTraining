@@ -7,12 +7,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 // This library will watch all the requests
 const morgan = require('morgan');
+const tutorialRoutes = require('./api/routes/tutorial');
 
 app.use(cors())
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use('/tutorial', tutorialRoutes);
 app.get('/', (req,res)=>{
     return res.status(200).json({message:"Welcolme to TenserflowJs training."})
 })
